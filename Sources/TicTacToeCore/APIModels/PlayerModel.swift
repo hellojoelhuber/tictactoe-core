@@ -7,7 +7,7 @@ public struct PlayerAPIModel: Codable {
     public let lastName: String
     public let username: String
 
-    init(id: UUID, firstName: String, lastName: String, username: String) {
+    public init(id: UUID, firstName: String, lastName: String, username: String) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
