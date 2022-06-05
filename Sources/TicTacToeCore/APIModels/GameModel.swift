@@ -12,7 +12,7 @@ public struct GameAPIModel: Codable {
     public let isComplete: Bool
     public var nextTurn: PlayerAPIModel? // references the turn order
     public let completeTurnsCount: Int // how many turns total have passed // for TTT, this will be 0 to 9.
-    public var winner: PlayerAPIModel? // the turn order
+    public var winner: PlayerAPIModel? // To reduce unnecessary trips to the db, this COULD be omitted from the DTO because a client can infer the answer by if (isComplete) winner = nextTurn, since nextTurn only increments if !isComplete. The server will still record the winner on the game record, however. Unfortunately, if the opponent resigns on their turn, the nextTurn = loser, so...
     public let createdAt: Date?
     public var createdBy: PlayerAPIModel
     public let updatedAt: Date?
@@ -23,9 +23,9 @@ public struct GameAPIModel: Codable {
                 isPasswordProtected: Bool, isMutualFollowsOnly: Bool,
                 playerCount: Int, openSeats: Int,
                 completeTurnsCount: Int,
-                nextTurn: PlayerAPIModel? = nil,
+                nextTurn: PlayerAPIModel?,
                 isComplete: Bool,
-                winner: PlayerAPIModel? = nil,
+//                winner: PlayerAPIModel?,
                 createdBy: PlayerAPIModel,
                 createdAt: Date,
                 updatedAt: Date,
