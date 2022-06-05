@@ -25,7 +25,7 @@ public struct GameAPIModel: Codable {
                 completeTurnsCount: Int,
                 nextTurn: PlayerAPIModel?,
                 isComplete: Bool,
-//                winner: PlayerAPIModel?,
+                winner: PlayerAPIModel?,
                 createdBy: PlayerAPIModel,
                 createdAt: Date,
                 updatedAt: Date,
